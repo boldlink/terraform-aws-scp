@@ -1,50 +1,54 @@
-[![Build Status](https://github.com/boldlink/<REPO_NAME>/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/<REPO_NAME>/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
-# Terraform  module \<PROVIDER>-\<MODULE> Terraform module
-
-## How to use this template -- DELETE THIS SECTION BEFORE PR
-1. Create your new module repository by using terraform only (see SOP) and make sure to use this template.
-2. Add your Terraform code in any branch other than `main/master`
-3. Change the `<REPO_NAME>` value for any badges in the `README.md` files in the root `examples` and `modules` folders.
-4. Add nested modules in the `modules` folder, or `DELETE` the nested folder if not used.
-    * _Note: you will also maintain the nested modules full `README.md` files, remember nested modules can be used on their own._
-5. Add examples in the `examples` folder.
-    * _Note: you can have as many examples as you want, but two are required._
-        * _minimum - this is the example with the minimum code to use the module._
-        * _complete - this is the example with all features for a single module used (the most common use)._
-6. Run `pre-commit run --all-files` to update the `README` and fix any issues.
-    * _Note: make sure your IDE tool uses spaces and not tabs specially on `yaml` files._
-7. Run `checkov` or `terrascan` tool and make sure to add the log to the PR (something to automate).
-    * _Note: make sure to scan your module nested modules and examples (great candidate for a makefile action/script and automation)._
-8. Open a pull request into the default branch (usually `main`) and have it reviewed. don't forget to add the security scan logs.
-    * _Note: make sure to add the nested modules README's to the pre-commit config so they are also updated and validated._
-9. If you have been assigned a reviewer DM the reviewer, or the channel if it has been more than one day.
-10. Post to the channel news of the releases to the teams.
+# Terraform module AWS SCP Terraform module
 
 ## Description
 
-lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem.
+This module provides a resource to manage an AWS Organizations policy
 
-Examples available [`here`]github.com/boldlink/<REPO_NAME>//tree/main/examples)
+Examples available [`here`]github.com/boldlink/terraform-aws-scp/tree/main/examples)
 
 ## Usage
 *NOTE*: These examples use the latest version of this module
+- Run these examples on the `AWS MANAGEMENT ACCOUNT`.
 
 ```console
-module "miniumum" {
-  source  = "boldlink/<module_name>/<provider>"
-  version = "x.x.x"
-  <insert the minimum required variables here if any are required>
-  ...
+locals {
+  name = "minimum-scp-example"
+  content = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid" : "RequireMicroInstanceType",
+        "Effect" : "Deny",
+        "Action" : "ec2:RunInstances",
+        "Resource" : [
+          "arn:aws:ec2:*:*:instance/*"
+        ],
+        "Condition" : {
+          "StringNotEquals" : {
+            "ec2:InstanceType" : "t2.micro"
+          }
+        }
+      }
+    ]
+    }
+  )
+}
+
+module "minimum_example" {
+  source  = "../../"
+  name    = local.name
+  content = local.content
 }
 ```
 ## Documentation
 
-[<ex. Amazon VPC/Github/Cloudflare> Documentation](https://link)
+[AWS Organizations policies Documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html)
 
-[Terraform module documentation](https://link)
+[Terraform module documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/organizations_policy)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -52,11 +56,13 @@ module "miniumum" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.11 |
-| <a name="requirement_github"></a> [github](#requirement\_github) | >= 4.24.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=4.15.1 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.24.0 |
 
 ## Modules
 
@@ -64,15 +70,26 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_organizations_policy.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/organizations_policy) | resource |
+| [aws_organizations_policy_attachment.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/organizations_policy_attachment) | resource |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_content"></a> [content](#input\_content) | The policy content to add to the new policy. For example, if you create a service control policy (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | The friendly name to assign to the policy. | `string` | `null` | no |
+| <a name="input_target_ids"></a> [target\_ids](#input\_target\_ids) | The unique identifier (IDS) of the root, organizational units, or account numbers that you want to attach the policy to. | `list(string)` | `[]` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | Amazon Resource Name (ARN) of the policy. |
+| <a name="output_id"></a> [id](#output\_id) | The unique identifier (ID) of the policy. |
+| <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | A map of tags assigned to the resource |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Third party software
@@ -89,7 +106,7 @@ This repository uses third party software:
   * Manually use via pre-commit
 
 ### Makefile
-The makefile contain in this repo is optimised for linux paths and the main purpose is to execute testing for now.
+The makefile contained in this repo is optimized for linux paths and the main purpose is to execute testing for now.
 * Create all tests:
 `$ make tests`
 * Clean all tests:
