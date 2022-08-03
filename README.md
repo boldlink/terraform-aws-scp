@@ -56,7 +56,7 @@ module "minimum_example" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.11 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=4.15.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.15.1 |
 
 ## Providers
 
@@ -79,9 +79,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_content"></a> [content](#input\_content) | The policy content to add to the new policy. For example, if you create a service control policy (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. | `string` | `null` | no |
-| <a name="input_name"></a> [name](#input\_name) | The friendly name to assign to the policy. | `string` | `null` | no |
-| <a name="input_target_ids"></a> [target\_ids](#input\_target\_ids) | The unique identifier (IDS) of the root, organizational units, or account numbers that you want to attach the policy to. | `list(string)` | `[]` | no |
+| <a name="input_content"></a> [content](#input\_content) | The policy content to add to the new policy. For example, if you create a service control policy (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | The friendly name to assign to the policy. | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Key-value map of resource tags. | `map(string)` | `{}` | no |
+| <a name="input_target_ids"></a> [target\_ids](#input\_target\_ids) | The unique identifier (IDS) of the root, organizational units, or account numbers that you want to attach the policy to. | `list(string)` | n/a | yes |
 
 ## Outputs
 

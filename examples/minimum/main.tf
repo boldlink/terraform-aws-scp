@@ -22,7 +22,13 @@ locals {
 }
 
 module "minimum_example" {
-  source  = "../../"
-  name    = local.name
-  content = local.content
+  source     = "../../"
+  name       = local.name
+  content    = local.content
+  target_ids = []
+  tags = {
+    environment        = "examples"
+    name               = local.name
+    "user::CostCenter" = "terraform-registry"
+  }
 }

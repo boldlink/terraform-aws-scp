@@ -28,4 +28,9 @@ module "complete_example" {
   name       = local.name
   content    = local.content
   target_ids = [data.aws_organizations_organization.org.non_master_accounts[0].id]
+  tags = {
+    environment        = "examples"
+    name               = local.name
+    "user::CostCenter" = "terraform-registry"
+  }
 }
