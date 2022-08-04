@@ -6,8 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - feat: Ability to add multiple SCPs by either using count or for loop
-- feat: Can this be used to create other types of org policies?
-- feat: Ability to attach policies to different targets using the same module
+- feat: Ability to attach different policies to different targets using the same module
 
 ## [1.0.0] - 2022-08-02
 ### Description
