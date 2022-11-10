@@ -1,36 +1,18 @@
-locals {
-  name = "complete-scp-example"
-  content = jsonencode({
-    "Version" : "2012-10-17",
-    "Statement" : [
-      {
-        "Sid" : "RequireMicroInstanceType",
-        "Effect" : "Deny",
-        "Action" : "ec2:RunInstances",
-        "Resource" : [
-          "arn:aws:ec2:*:*:instance/*"
-        ],
-        "Condition" : {
-          "StringNotEquals" : {
-            "ec2:InstanceType" : "t2.micro"
-          }
-        }
-      }
-    ]
-    }
-  )
+module "complete_example_scp" {
+  source      = "../../"
+  name        = "${local.name}-scp"
+  content     = local.content
+  description = "Service control policy to deny creation of other EC2 instance types apart from T2 Micro"
+  target_ids  = [data.aws_organizations_organization.org.non_master_accounts[0].id]
+  tags        = local.tags
 }
 
-data "aws_organizations_organization" "org" {}
-
-module "complete_example" {
-  source     = "../../"
-  name       = local.name
-  content    = local.content
-  target_ids = [data.aws_organizations_organization.org.non_master_accounts[0].id]
-  tags = {
-    environment        = "examples"
-    name               = local.name
-    "user::CostCenter" = "terraform-registry"
-  }
+module "complete_example_tag_policy" {
+  source      = "../../"
+  name        = "${local.name}-tag-policy"
+  content     = local.tag_policy
+  type        = "TAG_POLICY"
+  description = "Tag policy to enforce standardization of \"costcenter\" and \"Team\" tag keys and their allowed values"
+  target_ids  = [data.aws_organizations_organization.org.non_master_accounts[0].id]
+  tags        = local.tags
 }

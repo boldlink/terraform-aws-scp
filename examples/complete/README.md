@@ -10,19 +10,20 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.11 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.15.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.35.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.25.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.38.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_complete_example"></a> [complete\_example](#module\_complete\_example) | ../../ | n/a |
+| <a name="module_complete_example_scp"></a> [complete\_example\_scp](#module\_complete\_example\_scp) | ../../ | n/a |
+| <a name="module_complete_example_tag_policy"></a> [complete\_example\_tag\_policy](#module\_complete\_example\_tag\_policy) | ../../ | n/a |
 
 ## Resources
 
