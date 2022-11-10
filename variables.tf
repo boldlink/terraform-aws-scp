@@ -8,6 +8,18 @@ variable "name" {
   description = "The friendly name to assign to the policy."
 }
 
+variable "description" {
+  type        = string
+  description = "(Optional) A description to assign to the policy"
+  default     = null
+}
+
+variable "type" {
+  type        = string
+  description = "(Optional) The type of policy to create. Valid values are `AISERVICES_OPT_OUT_POLICY`, `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY (SCP)`, and `TAG_POLICY`. Defaults to `SERVICE_CONTROL_POLICY`."
+  default     = "SERVICE_CONTROL_POLICY"
+}
+
 variable "tags" {
   type        = map(string)
   description = "(Optional) Key-value map of resource tags."

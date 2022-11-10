@@ -1,4 +1,8 @@
-[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/auto-badge.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
@@ -10,7 +14,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.11 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.15.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.35.0 |
 
 ## Providers
 
