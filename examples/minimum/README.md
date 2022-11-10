@@ -1,4 +1,8 @@
-[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/checkov.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/auto-badge.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
 
 [<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
 
