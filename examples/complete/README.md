@@ -1,3 +1,6 @@
+[![License](https://img.shields.io/badge/License-Apache-blue.svg)](https://github.com/boldlink/terraform-aws-scp/blob/main/LICENSE)
+[![Latest Release](https://img.shields.io/github/release/boldlink/terraform-aws-scp.svg)](https://github.com/boldlink/terraform-aws-scp/releases/latest)
+[![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/update.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
 [![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/release.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
 [![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
 [![Build Status](https://github.com/boldlink/terraform-aws-scp/actions/workflows/pr-labeler.yaml/badge.svg)](https://github.com/boldlink/terraform-aws-scp/actions)
@@ -20,7 +23,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.38.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.61.0 |
 
 ## Modules
 
